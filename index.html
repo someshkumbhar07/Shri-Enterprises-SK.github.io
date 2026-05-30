@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shri Enterprises | Medicinal Products</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--primary:#0ea5e9;--secondary:#7972ce;--accent:#d0b02f;--bg:#f6fdfd;--text:#090b0e;--muted:#475569;--border:#c0c0c0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
+/* NAV */
+header{background:linear-gradient(135deg,#0ea5e9,#43e2d5);color:#fff;padding:1rem 2rem;position:sticky;top:0;z-index:50;}
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.navbar img{width:40px;height:40px;border-radius:8px;object-fit:cover;}
+.brand{display:flex;align-items:center;gap:.6rem;}
+.brand h2{margin:0;font-size:1.5rem;font-weight:700;color:#fff;}
+.nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.nav-links a{color:#fefce8;text-decoration:none;font-size:.95rem;transition:opacity .2s;}
+.nav-links a:hover{opacity:.7;}
+.nav-right{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.btn-white{padding:.6rem 1.2rem;background:#fff;color:var(--primary);border:none;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.88rem;transition:transform .2s,box-shadow .2s;}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.15);}
+.btn-ghost{padding:.55rem 1rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:999px;cursor:pointer;font-weight:600;font-size:.85rem;font-family:inherit;transition:background .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.28);}
+#cart-count{background:#ef4444;color:#fff;border-radius:50%;padding:1px 6px;font-size:11px;font-weight:800;margin-left:3px;}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:1.5rem;align-items:center;max-width:1200px;margin:2rem auto;padding:0 2rem;}
+.hero h1{font-size:clamp(1.9rem,4vw,3.4rem);margin-bottom:1rem;line-height:1.3;}
+.hero p{color:var(--muted);font-size:1rem;margin-bottom:1.5rem;}
+.highlight{color:var(--accent);}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;}
+.hero-img{width:100%;max-width:480px;border-radius:1.5rem;box-shadow:0 30px 60px rgba(15,23,42,.12);}
+.img-ph{width:100%;max-width:400px;height:280px;background:linear-gradient(135deg,#e0f2fe,#bae6fd);border-radius:1.5rem;display:grid;place-items:center;font-size:5rem;}
+
+/* MAIN */
+main{max-width:1200px;margin:0 auto;padding:0 2rem 4rem;}
+
+/* FEATURES */
+.features{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin:3rem 0;}
+.feat-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:1.5rem;}
+.feat-card h3{margin:0 0 .5rem;font-size:1.05rem;}
+.feat-card p{margin:0;color:var(--muted);font-size:.9rem;}
+
+/* PRODUCTS */
+.products-section{margin-top:3rem;}
+.sec-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.sec-header h2{margin:0;font-size:1.7rem;}
+.product-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.product-card{background:#fff;border:1px solid var(--border);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(15,23,42,.12);}
+.product-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.prod-ph{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e0f2fe,#bae6fd);display:grid;place-items:center;font-size:3.5rem;}
+.pc-body{padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.55rem;flex:1;}
+.pc-body h3{margin:0;font-size:1.05rem;}
+.pc-body p{margin:0;color:var(--muted);font-size:.84rem;flex:1;}
+.pc-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-top:.4rem;}
+.price{font-weight:700;font-size:1.35rem;color:var(--primary);}
+.pc-btns{display:flex;gap:.4rem;}
+.btn-cart{background:var(--secondary);border:none;color:#fff;padding:.6rem .85rem;border-radius:999px;cursor:pointer;font-weight:700;font-size:.82rem;font-family:inherit;transition:background .2s;}
+.btn-cart:hover{background:#0ea5e9;}
+.btn-buy{background:transparent;border:2px solid var(--secondary);color:var(--secondary);padding:.55rem .85rem;border-radius:999px;cursor:pointer;font-weight:700;font-size:.82rem;font-family:inherit;transition:all .2s;}
+.btn-buy:hover{background:var(--secondary);color:#fff;}
+
+/* TESTIMONIAL */
+.testim{margin-top:3rem;padding:2rem;background:linear-gradient(135deg,#ecfccb,#fef9c3);border-radius:28px;display:grid;grid-template-columns:1fr 250px;gap:1.5rem;align-items:center;}
+.testim strong{display:block;margin-top:.75rem;color:var(--primary);}
+
+/* FOOTER */
+footer{background:#0f172a;padding:2rem;margin-top:2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-inner h3{color:#fff;margin-bottom:.4rem;}
+.footer-inner p{color:#94a3b8;margin:.3rem 0;font-size:.9rem;}
+.footer-links{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:flex-start;}
+.footer-links a{color:#94a3b8;text-decoration:none;font-size:.9rem;}
+.footer-links a:hover{color:#fff;}
+
+/* WHATSAPP */
+.wa-btn{position:fixed;background:#25d366;bottom:20px;right:20px;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:40;display:flex;align-items:center;justify-content:center;width:55px;height:55px;transition:transform .2s;}
+.wa-btn:hover{transform:scale(1.1);}
+.wa-btn svg{fill:#fff;width:32px;height:32px;}
+
+/* ════ OVERLAYS ════ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:100;display:none;backdrop-filter:blur(3px);}
+.overlay.show{display:flex;}
+
+/* ── CART SIDEBAR ── */
+#cart-ov{align-items:stretch;justify-content:flex-end;}
+#cart-panel{background:#fff;width:400px;max-width:100%;height:100%;display:flex;flex-direction:column;box-shadow:-6px 0 30px rgba(0,0,0,.18);}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.3rem;background:linear-gradient(135deg,#0ea5e9,#43e2d5);color:#fff;flex-shrink:0;}
+.panel-head h3{margin:0;font-size:1.1rem;}
+.x-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;font-weight:700;}
+.cart-scroll{flex:1;overflow-y:auto;padding:.9rem 1.1rem;}
+.cart-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1f5f9;}
+.ci-emoji{font-size:2rem;width:48px;height:48px;background:#f0f9ff;border-radius:10px;display:grid;place-items:center;flex-shrink:0;}
+.ci-info{flex:1;}
+.ci-name{font-weight:700;font-size:.9rem;}
+.ci-price{color:var(--primary);font-weight:700;font-size:.85rem;}
+.qty-row{display:flex;align-items:center;gap:7px;}
+.q-btn{width:26px;height:26px;border-radius:7px;border:1px solid #d1d5db;background:#f9fafb;cursor:pointer;font-size:.95rem;font-weight:600;display:grid;place-items:center;}
+.q-btn:hover{background:#e0f2fe;}
+.q-num{font-weight:700;min-width:18px;text-align:center;font-size:.9rem;}
+.cart-foot{padding:1.1rem 1.3rem;border-top:1px solid #f0f0f0;background:#fafafa;flex-shrink:0;}
+.cf-row{display:flex;justify-content:space-between;font-size:.85rem;color:#555;margin-bottom:.35rem;}
+.cf-total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:800;margin:.7rem 0;}
+.btn-checkout{width:100%;padding:.95rem;background:linear-gradient(135deg,#0ea5e9,#7972ce);border:none;color:#fff;border-radius:12px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.btn-checkout:hover{opacity:.88;}
+.cart-empty{text-align:center;padding:3rem 1rem;color:#94a3b8;}
+
+/* ── PAYMENT MODAL ── */
+#pay-ov{align-items:center;justify-content:center;padding:1rem;}
+#pay-modal{background:#fff;border-radius:18px;width:100%;max-width:920px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;}
+#pay-modal .panel-head{flex-shrink:0;border-radius:0;}
+.pay-body{display:grid;grid-template-columns:1fr 290px;gap:1.3rem;padding:1.3rem;overflow-y:auto;flex:1;}
+.fsec{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:1.1rem;margin-bottom:.9rem;}
+.fsec h4{margin:0 0 .85rem;font-size:.95rem;color:#0f172a;}
+.fg{margin-bottom:.75rem;}
+.fg label{display:block;font-size:.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.25rem;}
+.fg input{width:100%;padding:.7rem .95rem;border:1px solid #d1d5db;border-radius:10px;font-size:.9rem;font-family:inherit;outline:none;background:#fff;transition:border-color .2s;}
+.fg input:focus{border-color:#0ea5e9;}
+.fg input.err{border-color:#ef4444;}
+.err-msg{color:#ef4444;font-size:.72rem;margin-top:2px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+.pay-tabs{display:flex;gap:.4rem;margin-bottom:.85rem;}
+.ptab{flex:1;padding:.6rem;border-radius:9px;border:1px solid #d1d5db;background:transparent;cursor:pointer;font-weight:600;font-size:.82rem;font-family:inherit;transition:all .2s;}
+.ptab.on{background:#eff6ff;border-color:#0ea5e9;color:#0369a1;}
+.cod-note{background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:.9rem;color:#92400e;font-size:.88rem;}
+.pay-sum{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:1.1rem;position:sticky;top:0;align-self:flex-start;}
+.pay-sum h4{margin:0 0 .9rem;}
+.si{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;}
+.si-left{display:flex;align-items:center;gap:7px;}
+.si-name{font-size:.82rem;font-weight:600;}
+.si-qty{font-size:.72rem;color:#888;}
+.si-price{font-size:.82rem;font-weight:700;}
+.sdiv{border:none;border-top:1px solid #e2e8f0;margin:.7rem 0;}
+.srow{display:flex;justify-content:space-between;font-size:.82rem;color:#64748b;margin-bottom:.35rem;}
+.stotal{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:800;margin-top:.7rem;}
+.btn-pay{width:100%;padding:.95rem;background:linear-gradient(135deg,#0ea5e9,#7972ce);border:none;color:#fff;border-radius:12px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit;margin-top:.9rem;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity .2s;}
+.btn-pay:hover{opacity:.88;}
+.btn-pay:disabled{opacity:.65;cursor:not-allowed;}
+.ssl{text-align:center;font-size:.72rem;color:#94a3b8;margin-top:.4rem;}
+.spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── SUCCESS + INVOICE ── */
+#suc-ov{align-items:center;justify-content:center;padding:1rem;}
+#suc-modal{background:#fff;border-radius:18px;width:100%;max-width:580px;max-height:95vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;}
+#suc-modal .panel-head{background:linear-gradient(135deg,#16a34a,#22c55e);flex-shrink:0;border-radius:0;}
+.suc-top{text-align:center;padding:1.5rem 1.5rem .8rem;}
+.suc-top h2{font-size:1.5rem;margin-bottom:.3rem;}
+.suc-top p{color:#555;font-size:.9rem;}
+.inv-wrap{max-width:490px;margin:0 auto;}
+.perf svg{display:block;width:100%;height:22px;}
+/* RETRO INVOICE */
+.inv-body{background:#f5e6c0;padding:26px 32px;font-family:'Special Elite','Courier New',monospace;color:#2a1400;position:relative;overflow:hidden;}
+.inv-wm{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%) rotate(-26deg);font-size:70px;font-weight:900;letter-spacing:8px;color:rgba(30,120,30,.055);pointer-events:none;user-select:none;white-space:nowrap;}
+.inv-store{text-align:center;margin-bottom:13px;border-bottom:2px solid #8b5e1a;padding-bottom:11px;}
+.inv-store .sn{font-size:22px;font-weight:700;letter-spacing:7px;margin-bottom:2px;}
+.inv-store .ss{font-size:9px;letter-spacing:3px;color:#7a4e10;margin-bottom:2px;}
+.inv-store .si2{font-size:9px;color:#a07040;}
+.inv-meta{display:grid;grid-template-columns:1fr 1fr;gap:2px;font-size:10px;margin-bottom:9px;}
+.inv-hr{border:none;border-top:2px solid #8b5e1a;margin:8px 0;}
+.inv-hr.d{border-top:2px dashed #c8a060;}
+.inv-stitle{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#7a4e10;margin-bottom:3px;}
+.inv-cname{font-weight:700;font-size:13px;margin-bottom:2px;}
+.inv-cinfo{font-size:10px;color:#6b4010;margin-bottom:1px;}
+.inv-addr{font-size:10px;color:#6b4010;background:rgba(139,94,26,.08);border-radius:5px;padding:6px 8px;margin:3px 0 9px;line-height:1.6;}
+.inv-th{display:grid;grid-template-columns:1fr 34px 66px 66px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#7a4e10;margin-bottom:5px;}
+.inv-th span:not(:first-child){text-align:right;}
+.inv-li{display:grid;grid-template-columns:1fr 34px 66px 66px;font-size:10px;margin-bottom:5px;align-items:start;}
+.inv-li>*:not(:first-child){text-align:right;}
+.inv-cat{font-size:8px;color:#a07040;}
+.inv-trow{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;}
+.inv-trow.g{color:#1a6b1a;}
+.inv-grand{display:flex;justify-content:space-between;font-size:16px;font-weight:700;margin-bottom:2px;}
+.inv-words{font-size:9px;color:#7a4e10;margin-bottom:9px;font-style:italic;}
+.inv-stamp{text-align:center;margin:11px 0;}
+.paid-stamp{display:inline-block;border:3px solid #1a6b1a;color:#1a6b1a;font-size:18px;font-weight:700;letter-spacing:6px;padding:4px 24px;border-radius:4px;transform:rotate(-4deg);}
+.inv-foot{text-align:center;font-size:9px;color:#a07040;line-height:1.9;}
+.inv-foot .ty{letter-spacing:3px;font-size:9px;margin-top:3px;}
+.inv-actions{padding:.9rem 1.3rem;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;flex-shrink:0;}
+.btn-print{background:#1e293b;color:#fff;border:none;padding:.75rem 1.8rem;border-radius:11px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;}
+.btn-print:hover{background:#334155;}
+.btn-cont{background:linear-gradient(135deg,#0ea5e9,#7972ce);color:#fff;border:none;padding:.75rem 1.8rem;border-radius:11px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;}
+
+/* ── LOGIN MODAL ── */
+#log-ov{align-items:center;justify-content:center;padding:1rem;}
+#log-modal{background:#fff;border-radius:18px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;}
+.atabs{display:flex;gap:.4rem;margin-bottom:1.1rem;}
+.atab{flex:1;padding:.6rem;border-radius:9px;border:1px solid #d1d5db;background:transparent;cursor:pointer;font-weight:700;font-size:.88rem;font-family:inherit;transition:all .2s;}
+.atab.on{background:#eff6ff;border-color:#0ea5e9;color:#0369a1;}
+.btn-auth{width:100%;padding:.95rem;background:linear-gradient(135deg,#7972ce,#0ea5e9);border:none;color:#fff;border-radius:12px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit;margin-top:.4rem;}
+.auth-err{background:#fef2f2;border:1px solid #fca5a5;color:#dc2626;padding:.65rem .9rem;border-radius:8px;font-size:.82rem;margin-bottom:.7rem;}
+.admin-hint{background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;padding:.8rem 1rem;margin-top:.9rem;font-size:.8rem;color:#1e40af;}
+.admin-hint strong{display:block;margin-bottom:.2rem;}
+
+/* ── HISTORY MODAL ── */
+#hist-ov{align-items:center;justify-content:center;padding:1rem;}
+#hist-modal{background:#fff;border-radius:18px;width:100%;max-width:780px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;}
+.hist-body{padding:1.3rem;overflow-y:auto;flex:1;}
+.h-stats{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.h-stat{background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:.8rem 1rem;flex:1;min-width:120px;}
+.h-stat .hs-label{font-size:.72rem;color:#64748b;margin-bottom:3px;}
+.h-stat .hs-val{font-size:1.2rem;font-weight:800;color:#0369a1;}
+.ord-card{background:#fff;border:1px solid #e2e8f0;border-radius:13px;margin-bottom:.85rem;overflow:hidden;}
+.ord-head{padding:.9rem 1.1rem;background:#f8fafc;display:flex;justify-content:space-between;align-items:center;cursor:pointer;flex-wrap:wrap;gap:.4rem;}
+.ord-head:hover{background:#f0f9ff;}
+.ord-id{font-weight:700;font-size:.9rem;}
+.ord-dt{font-size:.75rem;color:#888;}
+.ord-tot{font-size:1rem;font-weight:800;color:var(--primary);}
+.badge-paid{background:#dcfce7;color:#16a34a;padding:2px 9px;border-radius:999px;font-size:.72rem;font-weight:700;}
+.badge-method{background:#eff6ff;color:#0369a1;padding:2px 9px;border-radius:999px;font-size:.72rem;font-weight:600;}
+.ord-body{padding:.9rem 1.1rem;border-top:1px solid #e2e8f0;display:none;}
+.ord-body.open{display:block;}
+.ord-irow{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f1f5f9;justify-content:space-between;}
+.ord-irow:last-child{border-bottom:none;}
+.ord-ie{font-size:1.4rem;width:32px;height:32px;background:#f0f9ff;border-radius:7px;display:grid;place-items:center;}
+.ord-iname{font-size:.86rem;font-weight:600;flex:1;}
+.ord-ip{font-size:.86rem;font-weight:700;}
+.ship-box{background:#fff7ed;border:1px solid #fdba74;border-radius:9px;padding:.75rem .95rem;font-size:.82rem;margin:.7rem 0;}
+.ship-box strong{color:#ea580c;font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:2px;}
+.btn-inv{background:#f1f5f9;border:1px solid #d1d5db;color:#475569;padding:.55rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:4px;}
+.empty-box{text-align:center;padding:3rem 1rem;color:#94a3b8;}
+
+/* ── ADMIN MODAL ── */
+#adm-ov{align-items:center;justify-content:center;padding:1rem;}
+#adm-modal{background:#fff;border-radius:18px;width:100%;max-width:980px;max-height:95vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;}
+#adm-modal .panel-head{background:linear-gradient(135deg,#4f46e5,#7c3aed);flex-shrink:0;border-radius:0;}
+.adm-body{padding:1.3rem;overflow-y:auto;flex:1;}
+.adm-stats{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.adm-stat{border-radius:13px;padding:.9rem 1.1rem;flex:1;min-width:120px;}
+.adm-stat .as-lbl{font-size:.72rem;margin-bottom:3px;opacity:.8;}
+.adm-stat .as-val{font-size:1.2rem;font-weight:800;}
+.adm-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.adm-tab{padding:.5rem 1rem;border-radius:999px;border:none;cursor:pointer;font-weight:600;font-size:.82rem;font-family:inherit;background:#f1f5f9;color:#64748b;transition:all .2s;}
+.adm-tab.on{background:#4f46e5;color:#fff;}
+.ao-card{background:#fff;border:1px solid #e2e8f0;border-radius:13px;padding:1.1rem;margin-bottom:.75rem;}
+.ao-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem;}
+.ao-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem;}
+.aib{background:#f8fafc;border-radius:9px;padding:.85rem .95rem;}
+.aib-title{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:.45rem;}
+.aib-name{font-weight:700;font-size:.9rem;margin-bottom:2px;}
+.aib-info{font-size:.78rem;color:#888;margin-bottom:1px;}
+.aib-phone{font-size:.78rem;color:#0ea5e9;}
+.aib-ship{background:#fff7ed;border:1px solid #fdba74;border-radius:7px;padding:.55rem .75rem;font-size:.78rem;margin-top:.4rem;}
+.aib-ship strong{color:#ea580c;display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1px;}
+.fin-row{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.28rem;}
+.fin-row.tot{font-weight:700;border-top:1px solid #e2e8f0;padding-top:.35rem;margin-top:.28rem;}
+.ao-items{background:#fafafa;border-radius:9px;padding:.85rem .95rem;}
+.aoi-row{display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid #f1f5f9;justify-content:space-between;}
+.aoi-row:last-child{border-bottom:none;}
+.aoi-left{display:flex;align-items:center;gap:7px;}
+.aoi-sub{font-size:.7rem;color:#888;}
+.aoi-profit{font-size:.74rem;color:#16a34a;font-weight:600;}
+.daily-card{background:#fff;border:1px solid #e2e8f0;border-radius:13px;padding:1.1rem;margin-bottom:.75rem;}
+.daily-card.profit{border-color:#86efac;}
+.daily-card.loss{border-color:#fca5a5;}
+.daily-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem;}
+.daily-date{font-size:1rem;font-weight:800;}
+.dbadge{padding:.35rem 1rem;border-radius:999px;font-weight:800;font-size:.88rem;}
+.dbadge.p{background:#dcfce7;color:#16a34a;}
+.dbadge.l{background:#fef2f2;color:#dc2626;}
+.daily-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:.65rem;}
+.dsb{background:#f8fafc;border-radius:9px;padding:.7rem;}
+.dsb .dsl{font-size:.68rem;color:#94a3b8;margin-bottom:2px;}
+.dsb .dsv{font-size:.9rem;font-weight:700;}
+.mbar-wrap{background:#f1f5f9;border-radius:999px;height:4px;overflow:hidden;margin-bottom:3px;}
+.mbar{height:100%;border-radius:999px;transition:width .5s;}
+.mlbl{font-size:.68rem;color:#94a3b8;}
+.pr-row{background:#fff;border:1px solid #e2e8f0;border-radius:13px;padding:.95rem 1.1rem;display:flex;align-items:center;gap:.9rem;margin-bottom:.65rem;flex-wrap:wrap;}
+.pr-emoji{font-size:1.9rem;width:46px;height:46px;background:#f0f9ff;border-radius:11px;display:grid;place-items:center;flex-shrink:0;}
+.pr-name{flex:1;min-width:110px;font-weight:700;font-size:.9rem;}
+.pr-cat{font-size:.74rem;color:#888;}
+.pr-stats{display:flex;gap:.9rem;flex-wrap:wrap;}
+.ps{text-align:center;min-width:58px;}
+.ps .psl{font-size:.66rem;color:#94a3b8;margin-bottom:2px;}
+.ps .psv{font-size:.86rem;font-weight:700;}
+.pr-rank{font-size:1.4rem;font-weight:800;color:#d1d5db;}
+
+/* ── QR PAYMENT MODAL ── */
+#qr-ov{align-items:center;justify-content:center;padding:1rem;}
+#qr-modal{background:#fff;border-radius:22px;width:100%;max-width:440px;box-shadow:0 28px 70px rgba(0,0,0,.3);overflow:hidden;}
+#qr-modal .panel-head{background:linear-gradient(135deg,#16a34a,#22c55e);}
+.qr-body{padding:1.5rem;text-align:center;}
+.qr-amount-box{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:16px;padding:1rem 1.5rem;margin-bottom:1.2rem;}
+.qr-amount-label{font-size:.75rem;color:#16a34a;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:.2rem;}
+.qr-amount-value{font-size:2.4rem;font-weight:800;color:#15803d;letter-spacing:-1px;}
+.qr-amount-name{font-size:.82rem;color:#555;margin-top:.2rem;}
+.qr-code-wrap{background:#fff;border:3px solid #e2e8f0;border-radius:18px;padding:1rem;display:inline-block;margin-bottom:1rem;box-shadow:0 4px 16px rgba(0,0,0,.08);}
+#qr-canvas{display:block;}
+.qr-upi-label{font-size:.78rem;color:#888;margin-bottom:.25rem;}
+.qr-upi-id{font-size:1rem;font-weight:800;color:#0ea5e9;margin-bottom:.3rem;letter-spacing:.5px;}
+.qr-apps{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:1rem 0;flex-wrap:wrap;}
+.qr-app-badge{background:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;padding:.35rem .9rem;font-size:.78rem;font-weight:700;color:#374151;}
+.qr-timer{background:#fef3c7;border:1px solid #fbbf24;border-radius:10px;padding:.6rem 1rem;font-size:.85rem;color:#92400e;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.4rem;}
+.qr-timer span{font-weight:800;font-size:1rem;}
+.btn-open-upi{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:1rem;background:linear-gradient(135deg,#0ea5e9,#7972ce);color:#fff;border-radius:14px;font-weight:800;font-size:1rem;text-decoration:none;margin-bottom:.8rem;transition:opacity .2s;border:none;cursor:pointer;font-family:inherit;}
+.btn-open-upi:hover{opacity:.88;}
+.upi-divider{display:flex;align-items:center;gap:.75rem;margin:.5rem 0 .8rem;color:#aaa;font-size:.78rem;}
+.upi-divider::before,.upi-divider::after{content:'';flex:1;border-top:1px solid #e2e8f0;}
+.delivery-config{background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:.9rem 1rem;margin-bottom:.75rem;}
+.delivery-config label{font-size:.72rem;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:.4rem;}
+.delivery-config input{width:100%;padding:.6rem .9rem;border:1px solid #93c5fd;border-radius:8px;font-size:.95rem;font-family:inherit;outline:none;background:#fff;}
+.btn-paid:hover{opacity:.88;}
+.btn-qr-cancel{width:100%;padding:.75rem;background:transparent;border:1.5px solid #e2e8f0;color:#888;border-radius:14px;font-weight:600;font-size:.9rem;cursor:pointer;font-family:inherit;transition:all .2s;}
+.btn-qr-cancel:hover{border-color:#fc5c7d;color:#fc5c7d;}
+.qr-note{font-size:.73rem;color:#aaa;margin-top:.75rem;}
+.qr-steps{background:#f8fafc;border-radius:12px;padding:.85rem 1rem;margin-bottom:1rem;text-align:left;}
+.qr-steps p{font-size:.78rem;color:#555;margin:.22rem 0;}
+.qr-steps strong{color:#374151;font-size:.8rem;display:block;margin-bottom:.4rem;}
+@media print{
+  body>*:not(#print-area){display:none!important;}
+  #print-area{display:block!important;}
+  .inv-body{background:#fff!important;}
+  @page{margin:10mm;size:A4;}
+}
+#print-area{display:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .testim{grid-template-columns:1fr;}
+  .pay-body{grid-template-columns:1fr;}
+  .ao-grid{grid-template-columns:1fr;}
+  .daily-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  header{padding:.75rem 1rem;}
+  .hero{padding:0 1rem;}
+  main{padding:0 1rem 3rem;}
+  #cart-panel{width:100%;}
+  .g2{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">
+      <img src="images/Logo.jpg"
+           alt="Logo" onerror="this.style.display='none'">
+      <h2>🌿 Shri Enterprises</h2>
+    </div>
+    <nav class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn-ghost" onclick="openCart()">🛒 Cart <span id="cart-count">0</span></button>
+      <button class="btn-ghost" id="btn-login"   onclick="openLogin()">🔑 Login</button>
+      <button class="btn-ghost" id="btn-orders"  onclick="openHistory()" style="display:none;">📦 My Orders</button>
+      <button class="btn-ghost" id="btn-admin"   onclick="openAdmin()"  style="display:none;background:rgba(167,139,250,.25);">🏪 Manager</button>
+      <button class="btn-ghost" id="btn-logout"  onclick="doLogout()"   style="display:none;">Logout</button>
+      <button class="btn-white" onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div>
+    <h1>Trusted Medicinal Products for Your <span class="highlight">Health</span></h1>
+    <p>At Shri Enterprises, we are committed to providing high-quality medicinal products that you can trust. Our extensive range of pharmaceuticals is designed to meet your health needs and improve your well-being.</p>
+    <div class="hero-actions">
+      <button class="btn-white" onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+      <a href="https://chat.whatsapp.com/IdrEGg6duTb9lyKY54sfn0" class="btn-white" style="text-decoration:none;display:inline-flex;align-items:center;">Join WhatsApp</a>
+    </div>
+  </div>
+  <div style="display:grid;place-items:center;">
+    <img class="hero-img" src="images/Product Kit.jpg"
+         alt="Shri Enterprises" onerror="this.outerHTML='<div class=\'img-ph\'>🌿</div>'">
+  </div>
+</section>
+
+<!-- ══ MAIN ══ -->
+<main>
+  <section class="features" id="benefits">
+    <div class="feat-card"><h3>✅ Certified Quality</h3><p>All medicines and supplements are sourced from licensed manufacturers and undergo strict quality checks.</p></div>
+    <div class="feat-card"><h3>🚚 Fast Delivery</h3><p>Same-day dispatch and contactless delivery available in select regions for urgent healthcare needs.</p></div>
+    <div class="feat-card"><h3>🔒 Secure Checkout</h3><p>Encrypted payment processing and privacy-first order management keep your health data safe.</p></div>
+    <div class="feat-card"><h3>👨‍⚕️ Expert Support</h3><p>Chat with certified pharmacists for dosage guidance, contraindication checks, and product recommendations.</p></div>
+  </section>
+
+  <section class="products-section" id="products">
+    <div class="sec-header">
+      <div>
+        <p style="margin:0;color:var(--secondary);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Featured</p>
+        <h2>Top Medicinal Products</h2>
+      </div>
+      <a href="https://wa.me/919673944441" class="btn-white">💬 Get Help</a>
+    </div>
+    <div class="product-grid" id="pgrid"></div>
+  </section>
+
+  <section class="testim" id="testimonials">
+    <div>
+      <p>"Shri Enterprises made it easy to order my medicines and delivered everything in under 24 hours. The team even followed up to make sure I understood the dosage."</p>
+      <strong>— Priya S., Verified Customer</strong>
+    </div>
+    <div>
+      <p style="font-weight:700;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--primary);margin-bottom:.5rem;">Award-winning care</p>
+      <p style="color:var(--muted);">Rated 4.9/5 by over 3,200 customers for service quality, accuracy, and trusted product authenticity.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <h3>🌿 Shri Enterprises</h3>
+      <p>Delivering health essentials, over-the-counter treatments,<br>and prescription consultations with care.</p>
+      <p style="color:#4ECDC4;margin-top:.4rem;">📞 +91-96739-44441</p>
+      <p style="color:#4ECDC4;margin-top:.4rem;">Gpay/Phonepe +91-9766672757</p>
+    </div>
+    <div class="footer-links">
+      <a href="#top">Home</a><a href="#products">Products</a><a href="#benefits">Benefits</a><a href="#contact">Support</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="wa-btn" href="https://wa.me/919673944441" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ══ CART SIDEBAR ══ -->
+<div class="overlay" id="cart-ov" onclick="if(event.target===this)closeCart()">
+  <div id="cart-panel">
+    <div class="panel-head"><h3>🛒 Your Cart</h3><button class="x-btn" onclick="closeCart()">✕</button></div>
+    <div class="cart-scroll" id="cart-scroll"></div>
+    <div class="cart-foot" id="cart-foot" style="display:none;">
+      <div class="cf-row"><span>Subtotal</span><span id="cf-sub"></span></div>
+      <div class="cf-row" id="cf-del-row"><span>Delivery</span><span id="cf-del"></span></div>
+      <div class="cf-row" id="cf-free-row" style="display:none;color:#16a34a;"><span>Delivery</span><span>FREE 🎉</span></div>
+      <div class="cf-total"><span>Total</span><span id="cf-tot"></span></div>
+      <button class="btn-checkout" onclick="openPay()">Book Now →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="overlay" id="pay-ov">
+  <div id="pay-modal">
+    <div class="panel-head"><h3>📅 Booking Details</h3><button class="x-btn" onclick="closePay()">✕</button></div>
+    <div class="pay-body">
+      <!-- FORM -->
+      <div>
+        <div class="fsec">
+          <h4>👤 Contact Info</h4>
+          <div class="g2">
+            <div class="fg"><label>Full Name</label><input id="fn" placeholder="Somesh Kumbhar"><div class="err-msg" id="en"></div></div>
+            <div class="fg"><label>Email</label><input id="fe" type="email" placeholder="somesh@email.com"><div class="err-msg" id="ee"></div></div>
+          </div>
+          <div class="fg"><label>Phone Number</label><input id="fp" type="tel" placeholder="9422686329" maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')"><div class="err-msg" id="ep"></div></div>
+        </div>
+        <div class="fsec">
+          <h4>📦 Delivery Address</h4>
+          <div class="fg"><label>Flat / House / Street</label><input id="fa" placeholder="Flat 4B, Rose Apartments, MG Road"><div class="err-msg" id="ea"></div></div>
+          <div class="g2">
+            <div class="fg"><label>City</label><input id="fc" placeholder="Kolhapur"><div class="err-msg" id="ec"></div></div>
+            <div class="fg"><label>State</label><input id="fs" placeholder="Maharashtra"><div class="err-msg" id="es"></div></div>
+          </div>
+          <div class="fg"><label>PIN Code</label><input id="fz" placeholder="416007" maxlength="6" oninput="this.value=this.value.replace(/\D/g,'')"><div class="err-msg" id="ez"></div></div>
+        </div>
+        <div class="fsec">
+          <h4>📌 Booking Note</h4>
+          <p style="margin:0;color:#475569;font-size:.95rem;line-height:1.5rem;">This is a booking request only. No payment will be collected now. Your details and selected items will be sent to the admin on WhatsApp.</p>
+        </div>
+      </div>
+      <!-- SUMMARY -->
+      <div>
+        <div class="pay-sum">
+          <h4>Order Summary</h4>
+          <div id="ps-items"></div>
+          <hr class="sdiv">
+          <div class="srow"><span>Subtotal</span><span id="ps-sub"></span></div>
+          <div class="srow" id="ps-del-row"><span>Delivery</span><span id="ps-del"></span></div>
+          <div class="srow" id="ps-free-row" style="display:none;color:#16a34a;"><span>Delivery</span><span>FREE 🎉</span></div>
+          <div class="stotal"><span>Total</span><span id="ps-tot"></span></div>
+          <button class="btn-pay" id="paybtn" onclick="doPay()">
+            <span id="paytxt">Book Now →</span>
+            <div class="spin" id="payspin" style="display:none;"></div>
+          </button>
+          <div class="ssl">📩 Booking request will be sent to admin on WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUCCESS + INVOICE ══ -->
+<div class="overlay" id="suc-ov">
+  <div id="suc-modal">
+    <div class="panel-head"><h3>✅ Order Confirmed!</h3><button class="x-btn" onclick="closeSuc()">✕</button></div>
+    <div style="overflow-y:auto;flex:1;">
+      <div class="suc-top">
+        <div style="font-size:3rem;margin-bottom:.4rem;">🎉</div>
+        <h2>Thank You for Your Order!</h2>
+        <p id="suc-msg">Your invoice is ready below.</p>
+      </div>
+      <div class="inv-wrap" id="inv-box"></div>
+      <div class="inv-actions">
+        <button class="btn-print" onclick="doPrint()">🖨️ Print / Save as PDF</button>
+        <button class="btn-cont"  onclick="closeSuc()">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOGIN MODAL ══ -->
+<div class="overlay" id="log-ov" onclick="if(event.target===this)closeLogin()">
+  <div id="log-modal">
+    <div class="panel-head"><h3>🔑 Account</h3><button class="x-btn" onclick="closeLogin()">✕</button></div>
+    <div style="padding:1.3rem;">
+      <div class="atabs">
+        <button class="atab on" onclick="setATab('login',this)">Login</button>
+        <button class="atab"    onclick="setATab('register',this)">Register</button>
+      </div>
+      <div id="auth-err" style="display:none;" class="auth-err"></div>
+      <div class="fg" id="rname-row" style="display:none;"><label>Full Name</label><input id="auth-rname" placeholder="Your Name"></div>
+      <div class="fg"><label>Email</label><input id="auth-email" type="email" placeholder="you@email.com"></div>
+      <div class="fg"><label>Password</label><input id="auth-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAuth()"></div>
+      <button class="btn-auth" id="auth-btn" onclick="doAuth()">Login →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ORDER HISTORY ══ -->
+<div class="overlay" id="hist-ov" onclick="if(event.target===this)closeHistory()">
+  <div id="hist-modal">
+    <div class="panel-head"><h3>📦 My Orders</h3><button class="x-btn" onclick="closeHistory()">✕</button></div>
+    <div class="hist-body">
+      <div class="h-stats" id="h-stats"></div>
+      <div id="h-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ADMIN ══ -->
+<div class="overlay" id="adm-ov" onclick="if(event.target===this)closeAdmin()">
+  <div id="adm-modal">
+    <div class="panel-head"><h3>🏪 Store Manager Dashboard</h3>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <button onclick="exportData()" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:.4rem .9rem;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:600;">⬇️ Export Data</button>
+        <label style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:.4rem .9rem;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:600;">⬆️ Import Data<input type="file" accept=".json" onchange="importData(event)" style="display:none;"></label>
+        <button class="x-btn" onclick="closeAdmin()">✕</button>
+      </div>
+    </div>
+    <div class="adm-body">
+      <div class="adm-stats" id="adm-stats"></div>
+      <div class="adm-tabs">
+        <button class="adm-tab on" onclick="setADTab('orders',this)">📋 All Orders</button>
+        <button class="adm-tab"    onclick="setADTab('daily',this)">📅 Daily Report</button>
+        <button class="adm-tab"    onclick="setADTab('products',this)">🏆 Product Sales</button>
+      </div>
+      <div id="adm-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ UPI QR PAYMENT MODAL ══ -->
+<div class="overlay" id="qr-ov">
+  <div id="qr-modal">
+    <div class="panel-head"><h3>📱 Pay via UPI</h3><button class="x-btn" onclick="closeQR()">✕</button></div>
+    <div class="qr-body">
+      <div class="qr-amount-box">
+        <div class="qr-amount-label">Amount to Pay</div>
+        <div class="qr-amount-value" id="qr-amount">₹0</div>
+        <div class="qr-amount-name" id="qr-for">Shri Enterprises</div>
+      </div>
+      <div class="qr-steps">
+        <strong>📋 How to pay:</strong>
+        <p>1️⃣ Open GPay / PhonePe / Paytm / any UPI app</p>
+        <p>2️⃣ Tap <b>Scan QR</b> and scan the code below</p>
+        <p>3️⃣ Confirm the amount and pay</p>
+        <p>4️⃣ Come back and tap <b>"I've Paid ✅"</b></p>
+      </div>
+      <div class="qr-code-wrap">
+        <div id="qr-canvas"></div>
+      </div>
+      <div class="qr-upi-label">UPI ID</div>
+      <div class="qr-upi-id" id="qr-upi-display">—</div>
+      <div class="qr-apps">
+        <span class="qr-app-badge">📱 GPay</span>
+        <span class="qr-app-badge">📲 PhonePe</span>
+        <span class="qr-app-badge">💙 Paytm</span>
+        <span class="qr-app-badge">🏦 BHIM</span>
+        <span class="qr-app-badge">+ Any UPI</span>
+      </div>
+      <div class="qr-timer">⏳ Complete payment within <span id="qr-timer-txt">10:00</span></div>
+      <a id="upi-app-btn" href="#" class="btn-open-upi" target="_blank">
+        📲 Click Here to Open UPI App
+      </a>
+      <div class="upi-divider">or scan QR above</div>
+      <button class="btn-paid" onclick="confirmPayment()">✅ I've Paid — Show My Invoice</button>
+      <button class="btn-qr-cancel" onclick="closeQR()">✕ Cancel Payment</button>
+      <div class="qr-note">⚠️ Tap "I've Paid" only after completing the UPI payment.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT AREA -->
+<div id="print-area"><div class="inv-wrap" id="print-inv"></div></div>
+
+<script>
+/* ══ DATA ══ */
+const PRODS=[
+  {id:1,name:"Antox BAcid",cat:"Digestive Health",price:1,cost:700,emoji:"🫁",desc:"ऍसिडिटीमुळे होणारी चक्कर व डोकेदुखी कमी करण्यासाठी फायदेशीर. पचन सुधारण्यासाठी व पोट स्वच्छ राखण्यासाठी लाभदायक. शांत झोपेसाठी फायदेशीर.",img:"images/Antox B-Acid.jpg"},
+  {id:2,name:"Antox T",cat:"Immunity & Detox",price:1,cost:700,emoji:"💊",desc:"वजन कमी करण्यास मदत होते. मधुमेहावर लाभदायक. कोलेस्ट्रॉल कमी करण्यासाठी लाभदायक. रोगप्रतिकारशक्ती वाढवण्यास मदत होते.",img:"images/Antox T.jpg"},
+  {id:3,name:"Spray BAl Nico",cat:"De-Addiction",price:1,cost:700,emoji:"🌱",desc:"अल्कोहोल आणि निकोटिनची लालसा कमी करण्यास मदत करतो. पचनसंस्था सुधारण्यासाठी लाभदायक. झोपेच्या समस्येत लाभदायक.",img:"images/al-nico-spray.jpg"},
+  {id:4,name:"Antox D",cat:"Diabetes Care",price:1600,cost:700,emoji:"🩺",desc:"मधुमेहामुळे किडनीवर होणारे परिणाम कमी करण्यासाठी लाभदायक. नैराश्य कमी करण्यात आणि स्मरणशक्ती सुधारण्यासाठी मदत होते.",img:"images/Antox-D.jpg"},
+  {id:5,name:"Antox HLK",cat:"Heart & Kidney",price:1600,cost:700,emoji:"❤️",desc:"श्वासाचा त्रास कमी होण्यास मदत होते. हृदयाचा ताण कमी होण्यास मदत होते. उच्च रक्तदाब नियंत्रण करण्यासाठी लाभदायक.",img:"images/Antox HLK.jpg"},
+  {id:6,name:"Antox PN Powder",cat:"Bone & Joint",price:1600,cost:700,emoji:"🦴",desc:"संधिवात आणि तुटलेली हाडे जोडण्यास मदत करते. हाडांच्या सांध्यातील वंगण टिकवण्यास मदत होते. कॅल्शियम व खनिजांची कमतरता पूर्ण करण्यास मदत करते.",img:"images/Antox PN Powder.jpg"},
+  {id:7,name:"Amurt 51 (liquid)",cat:"Immunity Boost",price:1600,cost:700,emoji:"🌿",desc:"या फॉर्म्युलामध्ये ५१ वनस्पतीय फळांचा अर्क आहे. शरीरातील विष बाहेर काढण्यासाठी लाभदायक. इम्युनिटी बूस्ट करण्यासाठी लाभदायक.",img:"images/Amurt 51(Liquid).jpg"},
+  {id:8,name:"Antox X",cat:"Metabolism",price:1600,cost:700,emoji:"⚡",desc:"मानसिक तणावाची पातळी नियंत्रित ठेवण्यास मदत होते. मेटाबोलिझम सुधारण्यास लाभदायक. यकृताची ताकद वाढवण्यास मदत होते.",img:"images/Antox X.jpg"},
+  {id:9,name:"Antox C",cat:"Children Growth",price:1600,cost:700,emoji:"👶",desc:"रोगप्रतिकारशक्ती वाढवण्यास मदत होते. उंची वाढवण्यासाठी लाभदायक. मुलांच्या शारीरिक, मानसिक आणि बौद्धिक विकासासाठी उपयुक्त.",img:"images/Antox C.jpg"},
+  {id:10,name:"Antox PN Oil",cat:"Pain Relief Oil",price:1600,cost:700,emoji:"💆",desc:"सर्व प्रकारचे सांधेदुखी कमी होण्यास मदत होते. सूज कमी होण्यास मदत होते. बॉडी मसाजमध्ये देखील वापरले जाऊ शकते.",img:"images/PN oil.jpeg"},
+];
+
+const ADMIN_EMAIL="admin@shrienterprises.com", ADMIN_PASS="shri@admin123";
+const fmt=n=>"₹"+Number(n).toLocaleString("en-IN");
+
+let cart=[], orders=JSON.parse(localStorage.getItem("se_orders")||"[]"),
+    users=JSON.parse(localStorage.getItem("se_users")||"{}"),
+    session=JSON.parse(localStorage.getItem("se_session")||"null"),
+    payMethod="card", curInv=null, authMode="login", admTab="orders";
+
+const saveOrders=()=>localStorage.setItem("se_orders",JSON.stringify(orders));
+const saveUsers =()=>localStorage.setItem("se_users",JSON.stringify(users));
+const saveSession=()=>localStorage.setItem("se_session",JSON.stringify(session));
+const sub=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
+const gst=()=>0;
+const tot=()=>sub()+delivery();
+
+/* ── PRODUCTS ── */
+function renderProds(){
+  document.getElementById("pgrid").innerHTML=PRODS.map(p=>`
+    <article class="product-card">
+      <img src="${p.img}" alt="${p.name}" onerror="this.outerHTML='<div class=\'prod-ph\'>${p.emoji}</div>'">
+      <div class="pc-body">
+        <h3>${p.name}</h3>
+        <p><span style="color:#22c55e;">🟢</span> <b>Benefits</b><br>${p.desc}</p>
+        <div class="pc-meta">
+          <span class="price">${fmt(p.price)}</span>
+          <div class="pc-btns">
+            <button class="btn-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+            <button class="btn-buy"  onclick="buyNow(${p.id})">⚡ Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </article>`).join("");
+}
+
+/* ── CART ── */
+function addToCart(id){
+  if(!session){openLogin();return;}
+  const p=PRODS.find(x=>x.id===id), ex=cart.find(x=>x.id===id);
+  ex?ex.qty++:cart.push({...p,qty:1});
+  refreshCart(); openCart();
+}
+function buyNow(id){
+  if(!session){openLogin();return;}
+  cart=[{...PRODS.find(x=>x.id===id),qty:1}];
+  refreshCart(); openPay();
+}
+function chgQty(id,d){
+  const it=cart.find(x=>x.id===id); if(!it)return;
+  it.qty+=d; if(it.qty<=0)cart=cart.filter(x=>x.id!==id);
+  refreshCart(); renderCartPanel();
+}
+function refreshCart(){
+  const n=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById("cart-count").textContent=n;
+}
+function renderCartPanel(){
+  const sc=document.getElementById("cart-scroll"), ft=document.getElementById("cart-foot");
+  if(!cart.length){sc.innerHTML='<div class="cart-empty">🛒<br><br>Your cart is empty!</div>';ft.style.display="none";return;}
+  ft.style.display="block";
+  sc.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <div class="ci-emoji">${i.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-name">${i.name}</div>
+        <div class="ci-price">${fmt(i.price*i.qty)}</div>
+        <div style="font-size:.72rem;color:#888;">${i.cat}</div>
+      </div>
+      <div class="qty-row">
+        <button class="q-btn" onclick="chgQty(${i.id},-1)">−</button>
+        <span class="q-num">${i.qty}</span>
+        <button class="q-btn" onclick="chgQty(${i.id},+1)">+</button>
+      </div>
+    </div>`).join("");
+  document.getElementById("cf-sub").textContent=fmt(sub());
+  const d=delivery();
+  if(d===0){
+    document.getElementById("cf-del-row").style.display="none";
+    document.getElementById("cf-free-row").style.display="flex";
+  } else {
+    document.getElementById("cf-del-row").style.display="flex";
+    document.getElementById("cf-free-row").style.display="none";
+    document.getElementById("cf-del").textContent="+"+fmt(d);
+  }
+  document.getElementById("cf-tot").textContent=fmt(tot());
+}
+function openCart(){renderCartPanel();document.getElementById("cart-ov").classList.add("show");}
+function closeCart(){document.getElementById("cart-ov").classList.remove("show");}
+
+/* ── PAYMENT ── */
+function openPay(){
+  closeCart();
+  const pi=document.getElementById("ps-items");
+  pi.innerHTML=cart.map(i=>`
+    <div class="si">
+      <div class="si-left"><span style="font-size:1.3rem;">${i.emoji}</span>
+        <div><div class="si-name">${i.name}</div><div class="si-qty">× ${i.qty}</div></div>
+      </div>
+      <div class="si-price">${fmt(i.price*i.qty)}</div>
+    </div>`).join("");
+  document.getElementById("ps-sub").textContent=fmt(sub());
+  const d=delivery();
+  if(d===0){
+    document.getElementById("ps-del-row").style.display="none";
+    document.getElementById("ps-free-row").style.display="flex";
+  } else {
+    document.getElementById("ps-del-row").style.display="flex";
+    document.getElementById("ps-free-row").style.display="none";
+    document.getElementById("ps-del").textContent="+"+fmt(d);
+  }
+  document.getElementById("ps-tot").textContent=fmt(tot());
+  document.getElementById("paytxt").textContent="Book Now →";
+  document.getElementById("pay-ov").classList.add("show");
+}
+function closePay(){document.getElementById("pay-ov").classList.remove("show");}
+function setPTab(m,btn){
+  payMethod=m;
+  document.querySelectorAll(".ptab").forEach(b=>b.classList.remove("on")); btn.classList.add("on");
+  document.getElementById("pf-card").style.display=m==="card"?"block":"none";
+  document.getElementById("pf-upi").style.display=m==="upi"?"block":"none";
+  document.getElementById("pf-cod").style.display=m==="cod"?"block":"none";
+}
+function fmtExp(inp){let v=inp.value.replace(/\D/g,"").slice(0,4);if(v.length>=3)v=v.slice(0,2)+"/"+v.slice(2);inp.value=v;}
+
+function setE(id,msg){
+  const el=document.getElementById("e"+id), inp=document.getElementById("f"+id);
+  if(el)el.textContent=msg; if(inp){msg?inp.classList.add("err"):inp.classList.remove("err");}
+}
+function clearE(){["n","e","p","a","c","s","z","card","exp","cvv","upi"].forEach(k=>setE(k,""));}
+function val(id){return(document.getElementById("f"+id)||{}).value?.trim()||"";}
+
+function validatePay(){
+  clearE(); let ok=true;
+  if(!val("n")){setE("n","Required");ok=false;}
+  if(!/^[^@]+@[^@]+\.[^@]+$/.test(val("e"))){setE("e","Invalid email");ok=false;}
+  if(!/^\d{10}$/.test(val("p"))){setE("p","10-digit number");ok=false;}
+  if(!val("a")){setE("a","Required");ok=false;}
+  if(!val("c")){setE("c","Required");ok=false;}
+  if(!val("s")){setE("s","Required");ok=false;}
+  if(!/^\d{6}$/.test(val("z"))){setE("z","6-digit PIN");ok=false;}
+  return ok;
+}
+
+/* ════════════════════════════════════
+   💳 UPI CONFIG — ADD YOUR UPI ID HERE
+   Open this file in Notepad and replace
+   YOUR_UPI_ID@upi with your actual UPI ID
+   Example: shrienterprises@ybl
+            9673944441@paytm
+            shrienterprises@okicici
+════════════════════════════════════ */
+const UPI_ID   = "YOUR_UPI_ID@upi";       // ← Paste your UPI ID here
+const UPI_NAME = "Shri Enterprises";       // ← Your store name
+
+/* ════ DELIVERY CHARGE CONFIG ════
+   Rule: ₹50 per unit if buying 1 or 2 products
+         FREE if buying more than 2 products
+   Change DELIVERY_PER_UNIT to update the charge
+════════════════════════════════ */
+const DELIVERY_PER_UNIT = 50; // ← Change this to update delivery charge per unit
+
+const delivery = () => {
+  const totalQty = cart.reduce((s,i) => s + i.qty, 0);
+  if(totalQty === 0)  return 0;
+  if(totalQty > 2)    return 0;                      // More than 2 = FREE
+  return totalQty * DELIVERY_PER_UNIT;               // 1 item = ₹50, 2 items = ₹100
+};
+
+let qrTimer = null;
+let pendingInv = null;
+
+function doPay(){
+  if(!validatePay()) return;
+
+  const t = tot();
+  const now = new Date();
+  const orderId = "SE-" + (Math.floor(Math.random()*900000)+100000);
+  const addressText = [val("a"), val("c"), val("s"), val("z")].filter(Boolean).join(", ");
+  const itemsText = cart.map(i => `- ${i.name} x ${i.qty}`).join("\n");
+  const message = `New booking request from Shri Enterprises website:\n\nName: ${val("n")}\nMobile: +91 ${val("p")}\nAddress: ${addressText}\n\nItems:\n${itemsText}\n\nTotal: ${fmt(t)}\n\nPlease confirm the booking.`;
+  const waLink = `https://wa.me/919673944441?text=${encodeURIComponent(message)}`;
+
+  const order = {
+    id: orderId,
+    date: now.toLocaleDateString("en-IN",{day:"2-digit",month:"long",year:"numeric"}),
+    dateKey: now.toISOString().slice(0,10),
+    time: now.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}),
+    items: cart.map(i=>({...i})),
+    subtotal: sub(),
+    gst: gst(),
+    deliveryCharge: delivery(),
+    total: t,
+    cost: cart.reduce((x,i)=>x+i.cost*i.qty,0),
+    profit: sub()-cart.reduce((x,i)=>x+i.cost*i.qty,0),
+    name: val("n"),
+    email: val("e"),
+    phone: val("p"),
+    address: val("a"),
+    city: val("c"),
+    state: val("s"),
+    pincode: val("z"),
+    method: "WhatsApp Booking",
+    ts: now.getTime(),
+  };
+
+  orders.push(order);
+  saveOrders();
+  cart = []; refreshCart(); renderCartPanel();
+  closePay();
+  window.open(waLink, '_blank');
+  curInv = order;
+  showSuc();
+}
+
+function startQRTimer(seconds){
+  clearInterval(qrTimer);
+  let remaining = seconds;
+  function tick(){
+    const m = Math.floor(remaining/60), s = remaining%60;
+    document.getElementById("qr-timer-txt").textContent =
+      String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+    if(remaining <= 0){
+      clearInterval(qrTimer);
+      document.getElementById("qr-timer-txt").textContent = "EXPIRED";
+    }
+    remaining--;
+  }
+  tick();
+  qrTimer = setInterval(tick, 1000);
+}
+
+function closeQR(){
+  clearInterval(qrTimer);
+  pendingInv = null;
+  document.getElementById("qr-ov").classList.remove("show");
+}
+
+function confirmPayment(){
+  if(!pendingInv) return;
+  clearInterval(qrTimer);
+  curInv = pendingInv;
+  pendingInv = null;
+  orders.push(curInv);
+  saveOrders();
+  cart = []; refreshCart(); renderCartPanel();
+  document.getElementById("qr-ov").classList.remove("show");
+  showSuc();
+}
+
+/* ── INVOICE ── */
+function toWords(n){
+  const a=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+  const b=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+  if(!n||n===0)return"Zero"; if(n<20)return a[n]; if(n<100)return b[Math.floor(n/10)]+(n%10?" "+a[n%10]:"");
+  if(n<1000)return a[Math.floor(n/100)]+" Hundred"+(n%100?" "+toWords(n%100):"");
+  if(n<100000)return toWords(Math.floor(n/1000))+" Thousand"+(n%1000?" "+toWords(n%1000):"");
+  return toWords(Math.floor(n/100000))+" Lakh"+(n%100000?" "+toWords(n%100000):"");
+}
+
+function perf(flip){
+  const cy=flip?4:18;
+  return`<svg width="100%" height="22" style="display:block;"><rect width="100%" height="22" fill="#f5e6c0"/>${Array.from({length:70},(_,i)=>`<circle cx="${i*16+8}" cy="${cy}" r="6" fill="#0f172a"/>`).join("")}</svg>`;
+}
+
+function buildInv(o){
+  return perf(false)+`
+  <div class="inv-body">
+    <div class="inv-wm">★ PAID ★</div>
+    <div class="inv-store">
+      <div class="sn">SHRI ENTERPRISES</div>
+      <div class="ss">INVOICE / RECEIPT</div>
+      <div class="si2">Medicinal Products · +91-96739-44441</div>
+    </div>
+    <div class="inv-meta">
+      <div><b>Invoice:</b> #${o.id}</div><div style="text-align:right;"><b>Date:</b> ${o.date}</div>
+      <div><b>Time:</b> ${o.time}</div><div style="text-align:right;"><b>Via:</b> ${o.method}</div>
+    </div>
+    <hr class="inv-hr d">
+    <div class="inv-stitle">Billed To / Ship To</div>
+    <div class="inv-cname">${o.name}</div>
+    <div class="inv-cinfo">${o.email}</div>
+    ${o.phone?`<div class="inv-cinfo">Ph: ${o.phone}</div>`:""}
+    ${o.address?`<div class="inv-addr">📦 ${o.address},<br>${o.city}${o.state?", "+o.state:""}${o.pincode?" – "+o.pincode:""}</div>`:""}
+    <hr class="inv-hr d">
+    <div class="inv-th"><span>Item</span><span style="text-align:center;">Qty</span><span style="text-align:right;">Rate</span><span style="text-align:right;">Amt</span></div>
+    ${o.items.map(i=>`
+    <div class="inv-li">
+      <div><div style="font-weight:700;">${i.emoji} ${i.name}</div><div class="inv-cat">${i.cat}</div></div>
+      <div style="text-align:center;">${i.qty}</div>
+      <div style="text-align:right;">₹${i.price.toLocaleString()}</div>
+      <div style="text-align:right;font-weight:700;">₹${(i.price*i.qty).toLocaleString()}</div>
+    </div>`).join("")}
+    <hr class="inv-hr">
+    <div class="inv-trow"><span>Subtotal</span><span>${fmt(o.subtotal)}</span></div>
+    <div class="inv-trow ${o.deliveryCharge>0?'':'g'}"><span>Delivery</span><span>${o.deliveryCharge>0?fmt(o.deliveryCharge):'FREE ✓'}</span></div>
+    <hr class="inv-hr">
+    <div class="inv-grand"><span>TOTAL PAYABLE</span><span>${fmt(o.total)}</span></div>
+    <div class="inv-words">${toWords(o.total)} Rupees Only</div>
+    <hr class="inv-hr d">
+    <div class="inv-stamp"><span class="paid-stamp">✓ PAID</span></div>
+    <hr class="inv-hr d">
+    <div class="inv-foot">
+      <div>Computer generated invoice. No signature required.</div>
+      <div>Returns accepted within 7 days with original invoice.</div>
+      <div class="ty">★ THANK YOU FOR SHOPPING WITH SHRI ENTERPRISES ★</div>
+    </div>
+  </div>`+perf(true);
+}
+
+function showSuc(){
+  document.getElementById("suc-msg").textContent="Receipt for "+curInv.email;
+  document.getElementById("inv-box").innerHTML=buildInv(curInv);
+  document.getElementById("print-inv").innerHTML=buildInv(curInv);
+  document.getElementById("suc-ov").classList.add("show");
+}
+function closeSuc(){document.getElementById("suc-ov").classList.remove("show");}
+function doPrint(){window.print();}
+function printOrd(o){document.getElementById("print-inv").innerHTML=buildInv(o);window.print();}
+
+/* ── AUTH ── */
+function openLogin(){document.getElementById("log-ov").classList.add("show");}
+function closeLogin(){document.getElementById("log-ov").classList.remove("show");}
+function setATab(m,btn){
+  authMode=m;
+  document.querySelectorAll(".atab").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
+  document.getElementById("rname-row").style.display=m==="register"?"block":"none";
+  document.getElementById("auth-btn").textContent=m==="login"?"Login →":"Create Account →";
+  document.getElementById("auth-err").style.display="none";
+}
+function showAErr(msg){const el=document.getElementById("auth-err");el.textContent=msg;el.style.display="block";}
+function doAuth(){
+  const email=(document.getElementById("auth-email").value||"").trim();
+  const pass =document.getElementById("auth-pass").value||"";
+  const name =(document.getElementById("auth-rname")||{}).value?.trim()||"";
+  document.getElementById("auth-err").style.display="none";
+  if(!email||!pass){showAErr("Fill all fields.");return;}
+  if(email===ADMIN_EMAIL&&pass===ADMIN_PASS){
+    session={email,name:"Store Manager",isAdmin:true};saveSession();updateNav();closeLogin();openAdmin();return;
+  }
+  if(authMode==="login"){
+    const u=users[email]; if(!u){showAErr("Account not found. Please register.");return;}
+    if(u.password!==pass){showAErr("Wrong password!");return;}
+    session={email,name:u.name,isAdmin:false};saveSession();updateNav();closeLogin();openHistory();
+  }else{
+    if(!name){showAErr("Enter your name.");return;}
+    if(users[email]){showAErr("Account exists. Please login.");return;}
+    users[email]={name,password:pass};saveUsers();
+    session={email,name,isAdmin:false};saveSession();updateNav();closeLogin();openHistory();
+  }
+}
+function doLogout(){session=null;localStorage.removeItem("se_session");updateNav();}
+function updateNav(){
+  const L=document.getElementById("btn-login"), O=document.getElementById("btn-orders"),
+        A=document.getElementById("btn-admin"), X=document.getElementById("btn-logout");
+  if(session){
+    L.style.display="none"; X.style.display="inline-block";
+    X.textContent="👤 "+session.name.split(" ")[0]+" · Logout";
+    O.style.display=session.isAdmin?"none":"inline-block";
+    A.style.display=session.isAdmin?"inline-block":"none";
+  }else{
+    L.style.display="inline-block";O.style.display="none";A.style.display="none";X.style.display="none";
+  }
+}
+
+/* ── HISTORY ── */
+function openHistory(){
+  if(!session||session.isAdmin){openLogin();return;}
+  const my=orders.filter(o=>o.email===session.email);
+  const spent=my.reduce((s,o)=>s+o.total,0);
+  document.getElementById("h-stats").innerHTML=[
+    ["Total Orders",my.length,"#0369a1"],
+    ["Total Spent",fmt(spent),"#0369a1"],
+    ["All Status","Paid ✓","#16a34a"],
+  ].map(([l,v,c])=>`<div class="h-stat"><div class="hs-label">${l}</div><div class="hs-val" style="color:${c};">${v}</div></div>`).join("");
+
+  if(!my.length){
+    document.getElementById("h-list").innerHTML='<div class="empty-box"><div style="font-size:3rem;">🛍️</div><br><b>No orders yet!</b><br>Start shopping and your orders will appear here.</div>';
+  }else{
+    document.getElementById("h-list").innerHTML=[...my].reverse().map((o,i)=>`
+      <div class="ord-card">
+        <div class="ord-head" onclick="togOrd('ho${i}')">
+          <div><div class="ord-id">#${o.id}</div><div class="ord-dt">${o.date} · ${o.time}</div></div>
+          <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;">
+            <span class="ord-tot">${fmt(o.total)}</span>
+            <span class="badge-paid">✓ PAID</span>
+            <span class="badge-method">${o.method}</span>
+            <span style="color:#aaa;font-size:1rem;">⌄</span>
+          </div>
+        </div>
+        <div class="ord-body" id="ho${i}">
+          <div>${(o.items||[]).map(it=>`
+            <div class="ord-irow">
+              <div class="ord-ie">${it.emoji}</div>
+              <div class="ord-iname">${it.name} <span style="color:#888;font-size:.76rem;">× ${it.qty}</span></div>
+              <div class="ord-ip">${fmt(it.price*it.qty)}</div>
+            </div>`).join("")}</div>
+          ${o.address?`<div class="ship-box"><strong>📦 Delivered To</strong>${o.address}, ${o.city}${o.state?", "+o.state:""}${o.pincode?" – "+o.pincode:""}${o.phone?"<br><span style='color:#0ea5e9;'>📞 "+o.phone+"</span>":""}</div>`:""}
+          <button class="btn-inv" onclick='printOrd(${JSON.stringify(o).replace(/'/g,"&#39;")})'>🖨️ Print Invoice</button>
+        </div>
+      </div>`).join("");
+  }
+  document.getElementById("hist-ov").classList.add("show");
+}
+function closeHistory(){document.getElementById("hist-ov").classList.remove("show");}
+function togOrd(id){document.getElementById(id).classList.toggle("open");}
+
+/* ── ADMIN ── */
+function openAdmin(){
+  if(!session?.isAdmin){openLogin();return;}
+  renderAdm(); document.getElementById("adm-ov").classList.add("show");
+}
+function closeAdmin(){document.getElementById("adm-ov").classList.remove("show");}
+function setADTab(t,btn){admTab=t;document.querySelectorAll(".adm-tab").forEach(b=>b.classList.remove("on"));btn.classList.add("on");renderAdmContent();}
+
+function renderAdm(){
+  const tR=orders.reduce((s,o)=>s+o.total,0), tC=orders.reduce((s,o)=>s+(o.cost||0),0),
+        tP=orders.reduce((s,o)=>s+(o.profit||0),0);
+  document.getElementById("adm-stats").innerHTML=[
+    {l:"Total Revenue",v:fmt(tR),c:"#FF6B35",bg:"#fff7ed",i:"💰"},
+    {l:"Total Cost",v:fmt(tC),c:"#dc2626",bg:"#fef2f2",i:"📦"},
+    {l:"Gross Profit",v:fmt(tP),c:"#16a34a",bg:"#f0fdf4",i:"📈"},
+    {l:"Total Orders",v:orders.length,c:"#7c3aed",bg:"#f5f3ff",i:"🛒"},
+  ].map(s=>`<div class="adm-stat" style="background:${s.bg};border:1px solid ${s.c}22;"><div class="as-lbl" style="color:${s.c};">${s.i} ${s.l}</div><div class="as-val" style="color:${s.c};">${s.v}</div></div>`).join("");
+  renderAdmContent();
+}
+
+function renderAdmContent(){
+  const ct=document.getElementById("adm-content");
+  if(admTab==="orders") ct.innerHTML=renderAdmOrders();
+  else if(admTab==="daily") ct.innerHTML=renderAdmDaily();
+  else ct.innerHTML=renderAdmProds();
+}
+
+function renderAdmOrders(){
+  if(!orders.length)return'<div class="empty-box"><div style="font-size:3rem;">📭</div><br>No orders yet!</div>';
+  return[...orders].reverse().map(o=>`
+    <div class="ao-card">
+      <div class="ao-top">
+        <div><div style="font-weight:800;">#${o.id}</div><div style="color:#888;font-size:.78rem;">${o.date} · ${o.time}</div></div>
+        <div style="display:flex;gap:.35rem;flex-wrap:wrap;">
+          <span class="badge-paid">✓ PAID</span><span class="badge-method">${o.method}</span>
+        </div>
+      </div>
+      <div class="ao-grid">
+        <div class="aib">
+          <div class="aib-title">Customer Info</div>
+          <div class="aib-name">${o.name}</div>
+          <div class="aib-info">${o.email}</div>
+          ${o.phone?`<div class="aib-phone">📞 ${o.phone}</div>`:""}
+          ${o.address?`<div class="aib-ship"><strong>📦 Ship To</strong>${o.address}, ${o.city}${o.state?", "+o.state:""}${o.pincode?" – "+o.pincode:""}</div>`:""}
+        </div>
+        <div class="aib">
+          <div class="aib-title">Financials</div>
+          <div class="fin-row"><span style="color:#888;">Revenue</span><span style="font-weight:600;">${fmt(o.total)}</span></div>
+          <div class="fin-row"><span style="color:#888;">Cost</span><span style="color:#dc2626;font-weight:600;">${fmt(o.cost||0)}</span></div>
+          <div class="fin-row tot"><span style="color:#888;">Net Profit</span><span style="color:#16a34a;">${fmt(o.profit||0)}</span></div>
+        </div>
+      </div>
+      <div class="ao-items">
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:.5rem;">Items Ordered</div>
+        ${(o.items||[]).map(it=>`
+          <div class="aoi-row">
+            <div class="aoi-left"><span style="font-size:1.3rem;">${it.emoji}</span>
+              <div><div style="font-weight:600;font-size:.86rem;">${it.name}</div><div class="aoi-sub">Cost: ${fmt(it.cost||0)} · Sell: ${fmt(it.price)}</div></div>
+            </div>
+            <div style="text-align:right;"><div style="font-weight:700;">×${it.qty}</div><div class="aoi-profit">+${fmt((it.price-(it.cost||0))*it.qty)}</div></div>
+          </div>`).join("")}
+      </div>
+      <button class="btn-inv" style="margin-top:.65rem;" onclick='printOrd(${JSON.stringify(o).replace(/'/g,"&#39;")})'>🖨️ Print Invoice</button>
+    </div>`).join("");
+}
+
+function renderAdmDaily(){
+  const dm={};
+  orders.forEach(o=>{const dk=o.dateKey||o.date;if(!dm[dk])dm[dk]={date:dk,rev:0,cost:0,profit:0,orders:0,gst:0};dm[dk].rev+=o.total;dm[dk].cost+=o.cost||0;dm[dk].profit+=o.profit||0;dm[dk].gst+=o.gst||0;dm[dk].orders++;});
+  const dl=Object.values(dm).sort((a,b)=>b.date.localeCompare(a.date));
+  if(!dl.length)return'<div class="empty-box">No daily data yet.</div>';
+  return dl.map(d=>{
+    const mg=d.rev>0?((d.profit/d.rev)*100).toFixed(1):0, ip=d.profit>=0;
+    return`<div class="daily-card ${ip?"profit":"loss"}">
+      <div class="daily-top">
+        <div><div class="daily-date">${d.date}</div><div style="color:#888;font-size:.78rem;">${d.orders} order${d.orders>1?"s":""} · Margin: ${mg}%</div></div>
+        <div class="dbadge ${ip?"p":"l"}">${ip?"📈":"📉"} ${fmt(d.profit)}</div>
+      </div>
+      <div class="daily-grid">
+        ${[["Revenue",fmt(d.rev),"#FF6B35"],["Cost",fmt(d.cost),"#dc2626"],["Net Profit",fmt(d.profit),ip?"#16a34a":"#dc2626"]].map(([l,v,c])=>`<div class="dsb"><div class="dsl">${l}</div><div class="dsv" style="color:${c};">${v}</div></div>`).join("")}
+      </div>
+      <div class="mbar-wrap"><div class="mbar" style="width:${Math.min(100,Math.max(0,parseFloat(mg)))}%;background:${ip?"#16a34a":"#dc2626"};"></div></div>
+      <div class="mlbl">Profit margin</div>
+    </div>`;}).join("");
+}
+
+function renderAdmProds(){
+  const pm={};
+  orders.forEach(o=>(o.items||[]).forEach(it=>{if(!pm[it.id])pm[it.id]={...it,tQ:0,tR:0,tC:0,tP:0};pm[it.id].tQ+=it.qty;pm[it.id].tR+=it.price*it.qty;pm[it.id].tC+=(it.cost||0)*it.qty;pm[it.id].tP+=(it.price-(it.cost||0))*it.qty;}));
+  const ps=Object.values(pm).sort((a,b)=>b.tR-a.tR);
+  if(!ps.length)return'<div class="empty-box">No product data yet.</div>';
+  return ps.map((p,i)=>{
+    const mg=p.tR>0?((p.tP/p.tR)*100).toFixed(1):0;
+    return`<div class="pr-row">
+      <div class="pr-emoji">${p.emoji}</div>
+      <div><div class="pr-name">${p.name}</div><div class="pr-cat">${p.cat} · ${p.tQ} units sold</div></div>
+      <div class="pr-stats">
+        ${[["Revenue",fmt(p.tR),"#FF6B35"],["Cost",fmt(p.tC),"#dc2626"],["Profit",fmt(p.tP),"#16a34a"],["Margin",mg+"%","#d97706"]].map(([l,v,c])=>`<div class="ps"><div class="psl">${l}</div><div class="psv" style="color:${c};">${v}</div></div>`).join("")}
+      </div>
+      <div class="pr-rank">#${i+1}</div>
+    </div>`;}).join("");
+}
+
+/* ── DATA EXPORT / IMPORT ── */
+function exportData(){
+  const data={ orders, users, exportedAt: new Date().toISOString() };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="shri-enterprises-data.json"; a.click();
+}
+function importData(e){
+  const file=e.target.files[0]; if(!file)return;
+  const reader=new FileReader();
+  reader.onload=evt=>{
+    try{
+      const data=JSON.parse(evt.target.result);
+      if(data.orders){orders=data.orders; saveOrders();}
+      if(data.users) {users=data.users;  saveUsers();}
+      alert("✅ Data imported successfully!\n"+orders.length+" orders · "+Object.keys(users).length+" users loaded.");
+      renderAdm();
+    }catch(err){ alert("❌ Invalid file. Please import a valid backup file."); }
+  };
+  reader.readAsText(file);
+  e.target.value=""; // reset so same file can be re-imported
+}
+
+/* ── INIT ── */
+renderProds();
+updateNav();
+</script>
+</body>
+</html>
